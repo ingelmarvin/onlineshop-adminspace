@@ -1,19 +1,7 @@
 sap.ui.define([], function () {
     "use strict"
     return {
-        statusText: function (sStatus) {
-            var resourceBundle = this.getView().getModel("i18n").getResourceBundle();
-            switch (sStatus) {
-                case "A":
-                    return resourceBundle.getText("invoiceStatusA");
-                case "B":
-                    return resourceBundle.getText("invoiceStatusB");
-                case "C":
-                    return resourceBundle.getText("invoiceStatusC");
-                default:
-                    return sStatus;
-            }
-        },
+
 
         payedText: function (bStatus) {
             if (bStatus) {
@@ -26,6 +14,30 @@ sap.ui.define([], function () {
         payedState: function (bStatus) {
             if (bStatus) {
                 return "Success";
+            } else {
+                return "Error";
+            }
+        },
+
+        deliveryText: function (sStatus) {
+            if (sStatus === "") {
+                return "Unbekannt";
+            } else if (sStatus === "ordered") {
+                return "Nicht versendet";
+            } else if (sStatus === "shipped") {
+                return "Versendet"
+            } else {
+                return "Unbekannt";
+            }
+        },
+
+        deliveryState: function (sStatus) {
+            if (sStatus === "") {
+                return "Error";
+            } else if (sStatus === "ordered") {
+                return "Warning";
+            } else if (sStatus === "shipped") {
+                return "Success"
             } else {
                 return "Error";
             }

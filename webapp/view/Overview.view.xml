@@ -6,9 +6,16 @@
 	<Page title="{i18n>homePageTitle}">
 		<content>
 			<Button
+				class="sapUiTinyMargin"
 				text="Bestellungen"
 				press=".onOrdersPressed"
 				icon="sap-icon://sales-order"
+			/>
+			<Button
+				class="sapUiTinyMargin"
+				text="Produkte"
+				press=".onProductsPressed"
+				icon="sap-icon://product"
 			/>
 		</content>
 	</Page>

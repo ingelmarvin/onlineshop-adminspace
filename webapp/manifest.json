@@ -21,6 +21,10 @@
             "ordersRemote": {
                 "uri": "http://localhost:3000/orders",
                 "type": "JSON"
+            },
+            "productsRemote": {
+                "uri": "http://localhost:3000/products",
+                "type": "JSON"
             }
         }
     },
@@ -75,6 +79,9 @@
             },
             "orders": {
                 "dataSource": "ordersRemote"
+            },
+            "products": {
+                "dataSource": "productsRemote"
             }
         },
         "rootView": {
@@ -104,6 +111,11 @@
                     "pattern": "orders",
                     "name": "orders",
                     "target": "orders"
+                },
+                {
+                    "pattern": "products",
+                    "name": "products",
+                    "target": "products"
                 }
             ],
             "targets": {
@@ -114,6 +126,10 @@
                 "orders": {
                     "viewId": "orders",
                     "viewName": "Orders"
+                },
+                "products": {
+                    "viewId": "products",
+                    "viewName": "Products"
                 }
             }
         },

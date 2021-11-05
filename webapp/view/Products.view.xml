@@ -1,0 +1,75 @@
+<mvc:View
+	controllerName="onlineshop.adminspace.controller.Products"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<Page
+		showNavButton="true"
+		navButtonPress=".onNavBack"
+		title="{i18n>productsTitle}"
+	>
+		<subHeader>
+		</subHeader>
+		<content>
+			<Table
+				alternateRowColors="true"
+				id="table"
+				class="saUiResponsiveMargin"
+				width="auto"
+				items="{
+					path: 'products>/Products',
+					sorter: {
+						path: 'id'
+					}
+				}"
+			>
+				<columns>
+					<Column>
+						<Text text="{i18n>columnTitle}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnPrice}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press=".onProductPressed"
+					>
+						<cells>
+							<ObjectIdentifier title="{products>title}"/>
+							<ObjectNumber
+								number="{
+									parts: [{
+										path: 'products>price'
+									}, {
+										path: 'products>currency'
+									}],
+									type: 'sap.ui.model.type.Currency',
+									formatOptions: {
+										showMeasure: false
+									}
+								}"
+								unit="{products>currency}"
+								state="Success"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					text="Neues Produkt anlegen"
+					type="Accept"
+					icon="sap-icon://add-product"
+				/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

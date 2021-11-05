@@ -10,11 +10,8 @@ sap.ui.define([
     formatter
 ) {
     "use strict";
-    return Controller.extend("onlineshop.adminspace.controller.Orders", {
+    return Controller.extend("onlineshop.adminspace.controller.Products", {
         formatter: formatter,
-        onInit: function () {
-        },
-
         onNavBack: function (oEvent) {
             const oHistory = History.getInstance();
             const sPreviousHash = oHistory.getPreviousHash();
@@ -27,12 +24,8 @@ sap.ui.define([
             }
         },
 
-        onOrderPressed: function (oEvent) {
-            sap.m.MessageToast.show("Order clicked");
-        },
-
-        onFilterOrders: function (oEvent) {
-
+        onProductPressed: function (oEvent) {
+            sap.m.MessageToast.show("Product clicked!");
         }
     });
 });

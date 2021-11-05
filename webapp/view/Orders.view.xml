@@ -32,7 +32,7 @@
 				items="{
 					path: 'orders>/Orders',
 					sorter: {
-						path: 'OrderID'
+						path: 'date'
 					}
 				}"
 			>
@@ -65,33 +65,48 @@
 						press=".onOrderPressed"
 					>
 						<cells>
-							<ObjectIdentifier title="{orders>OrderID}"/>
+							<ObjectIdentifier title="{orders>id}"/>
 							<ObjectNumber
 								number="{
 									parts: [{
-										path: 'orders>Value'
+										path: 'orders>value'
 									}, {
-										path: 'orders>Currency'
+										path: 'orders>currency'
 									}],
 									type: 'sap.ui.model.type.Currency',
 									formatOptions: {
 										showMeasure: false
 									}
 								}"
-								unit="{orders>Currency}"
+								unit="{orders>currency}"
 								state="Success"
 							/>
 							<ObjectNumber
-								number="{orders>Quantity}"
+								number="{orders>quantity}"
 								emphasized="false"
 							/>
-							<ObjectStatus text="{
-								path: 'orders>Payed',
-								formatter: '.formatter.payedText'
-							}"/>
-							<ObjectStatus text="{orders>Status}"/>
-							<ObjectStatus text="{orders>Date}"/>
-							<ObjectStatus text="{orders>Time}"/>
+							<ObjectStatus
+								text="{
+									path: 'orders>payed',
+									formatter: '.formatter.payedText'
+								}"
+								state="{
+									path: 'orders>payed',
+									formatter: '.formatter.payedState'
+								}"
+							/>
+							<ObjectStatus
+								text="{
+									path: 'orders>status',
+									formatter: '.formatter.deliveryText'
+								}"
+								state="{
+									path: 'orders>status',
+									formatter: '.formatter.deliveryState'
+								}"
+							/>
+							<ObjectStatus text="{orders>date}"/>
+							<ObjectStatus text="{orders>time}"/>
 						</cells>
 					</ColumnListItem>
 				</items>
