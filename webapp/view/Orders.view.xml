@@ -1,0 +1,101 @@
+<mvc:View
+	controllerName="onlineshop.adminspace.controller.Orders"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<Page
+		showNavButton="true"
+		navButtonPress=".onNavBack"
+		title="{i18n>ordersTitle}"
+	>
+		<subHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<SearchField
+					width="14rem"
+					search=".onFilterOrders"
+					ariaLabelledBy="searchFieldLabel"
+					ariaDescribedBy="searchFieldDescription"
+					placeholder="{i18n>searchFieldPlaceHolder}"
+				/>
+			</Toolbar>
+		</subHeader>
+		<content>
+			<Table
+				alternateRowColors="true"
+				id="table"
+				class="saUiResponsiveMargin"
+				width="auto"
+				items="{
+					path: 'orders>/Orders',
+					sorter: {
+						path: 'OrderID'
+					}
+				}"
+			>
+				<columns>
+					<Column>
+						<Text text="{i18n>columnOrderID}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnValue}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnQuantity}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnPayed}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnStatus}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnDate}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnTime}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem
+						type="Navigation"
+						press=".onOrderPressed"
+					>
+						<cells>
+							<ObjectIdentifier title="{orders>OrderID}"/>
+							<ObjectNumber
+								number="{
+									parts: [{
+										path: 'orders>Value'
+									}, {
+										path: 'orders>Currency'
+									}],
+									type: 'sap.ui.model.type.Currency',
+									formatOptions: {
+										showMeasure: false
+									}
+								}"
+								unit="{orders>Currency}"
+								state="Success"
+							/>
+							<ObjectNumber
+								number="{orders>Quantity}"
+								emphasized="false"
+							/>
+							<ObjectStatus text="{
+								path: 'orders>Payed',
+								formatter: '.formatter.payedText'
+							}"/>
+							<ObjectStatus text="{orders>Status}"/>
+							<ObjectStatus text="{orders>Date}"/>
+							<ObjectStatus text="{orders>Time}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,10 @@
+specVersion: '2.2'
+metadata:
+  name: onlineshop-adminspace
+type: application
+framework:
+  name: SAPUI5
+  version: "1.95.0"
+  libraries:
+    - name: sap.f
+    - name: sap.m

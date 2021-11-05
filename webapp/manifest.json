@@ -1,0 +1,138 @@
+{
+    "_version": "1.1.0",
+    "start_url": "<startUrl>",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "onlineshop.adminspace",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "tags": {
+            "keywords": [
+                "{{<keyword1>}}",
+                "{{<keyword2>}}"
+            ]
+        },
+        "dataSources": {
+            "ordersRemote": {
+                "uri": "http://localhost:3000/orders",
+                "type": "JSON"
+            }
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "icons": {
+            "icon": "<icon>",
+            "favIcon": "<favIcon>",
+            "phone": "<phone>",
+            "phone@2": "<phone@2>",
+            "tablet": "<tablet>",
+            "tablet@2": "<tablet@2>"
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_fiori_3_dark"
+        ],
+        "technology": "UI5"
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "resources": {
+            "js": [
+                {
+                    "uri": "<uri>"
+                }
+            ]
+        },
+        "dependencies": {
+            "minUI5Version": "1.60",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "onlineshop.adminspace.i18n.i18n",
+                    "supportedLocales": [
+                        ""
+                    ],
+                    "fallbackLocale": ""
+                },
+                "uri": "<uriRelativeToManifest>"
+            },
+            "orders": {
+                "dataSource": "ordersRemote"
+            }
+        },
+        "rootView": {
+            "viewName": "onlineshop.adminspace.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "app"
+        },
+        "handleValidation": false,
+        "config": {},
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "onlineshop.adminspace.view",
+                "controlId": "app",
+                "controlAggregation": "pages",
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "overview",
+                    "target": "overview"
+                },
+                {
+                    "pattern": "orders",
+                    "name": "orders",
+                    "target": "orders"
+                }
+            ],
+            "targets": {
+                "overview": {
+                    "viewId": "overview",
+                    "viewName": "Overview"
+                },
+                "orders": {
+                    "viewId": "orders",
+                    "viewName": "Orders"
+                }
+            }
+        },
+        "extends": {
+            "component": "<extendedComponentId>",
+            "minVersion": "<minComp1Version>",
+            "extensions": {}
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        }
+    },
+    "sap.platform.abap": {
+        "_version": "1.1.0",
+        "uri": "<uri>"
+    },
+    "sap.platform.hcp": {
+        "_version": "1.1.0",
+        "uri": "<uri>"
+    }
+}
