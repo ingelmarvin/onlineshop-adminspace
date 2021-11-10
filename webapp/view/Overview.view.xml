@@ -2,23 +2,37 @@
 	controllerName="onlineshop.adminspace.controller.Overview"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
 >
-	<Page title="{i18n>homePageTitle}" >
+	<Page title="{i18n>homePageTitle}">
 		<content>
-			<Button
-				width="8rem"
-				class="sapUiTinyMargin"
-				text="Bestellungen"
-				press=".onOrdersPressed"
-				icon="sap-icon://sales-order"
-			/>
-			<Button
-				width="8rem"
-				class="sapUiTinyMargin"
-				text="Produkte"
-				press=".onProductsPressed"
-				icon="sap-icon://product"
-			/>
+			<f:Card
+				class="sapUiMediumMargin"
+				width="45%"
+			>
+				<f:header>
+					<card:Header
+						title="Bestellungen"
+						subtitle="Bestellungen anzeigen und versenden"
+						iconSrc="sap-icon://sales-order"
+						press=".onOrdersPressed"
+					/>
+				</f:header>
+			</f:Card>
+			<f:Card
+				class="sapUiMediumMargin"
+				width="45%"
+			>
+				<f:header>
+					<card:Header
+						title="Produkte"
+						subtitle="Produkte anzeigen und bearbeiten"
+						iconSrc="sap-icon://product"
+						press=".onProductsPressed"
+					/>
+				</f:header>
+			</f:Card>
 		</content>
 	</Page>
 </mvc:View>

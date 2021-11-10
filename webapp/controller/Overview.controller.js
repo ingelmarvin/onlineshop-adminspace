@@ -18,6 +18,10 @@ sap.ui.define([
         onProductsPressed: function (oEvent) {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("products");
+        },
+
+        onNavigate: function (oEvent) {
+
         }
     });
 });
