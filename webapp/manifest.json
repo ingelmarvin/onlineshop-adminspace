@@ -121,6 +121,11 @@
                     "pattern": "product/{productPath}",
                     "name": "product",
                     "target": "product"
+                },
+                {
+                    "pattern": "createProduct",
+                    "name": "createProduct",
+                    "target": "createProduct"
                 }
             ],
             "targets": {
@@ -139,6 +144,10 @@
                 "product": {
                     "viewId": "product",
                     "viewName": "Product"
+                },
+                "createProduct": {
+                    "viewId": "createProduct",
+                    "viewName": "CreateProduct"
                 }
             }
         },

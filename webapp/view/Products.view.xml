@@ -68,6 +68,7 @@
 					text="Neues Produkt anlegen"
 					type="Accept"
 					icon="sap-icon://add-product"
+					press="onCreateProduct"
 				/>
 			</OverflowToolbar>
 		</footer>

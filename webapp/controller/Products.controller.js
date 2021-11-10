@@ -2,12 +2,14 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/ui/core/UIComponent",
-    "../model/formatter"
+    "../model/formatter",
+    "sap/m/MessageBox"
 ], function (
     Controller,
     History,
     UIComponent,
-    formatter
+    formatter,
+    MessageBox
 ) {
     "use strict";
     return Controller.extend("onlineshop.adminspace.controller.Products", {
@@ -31,6 +33,11 @@ sap.ui.define([
             oRouter.navTo("product", {
                 productPath: window.encodeURIComponent(oItem.getBindingContext("products").getPath().substr(1))
             });
+        },
+
+        onCreateProduct: function (oEvent) {
+            const oRouter = UIComponent.getRouterFor(this);
+            oRouter.navTo("createProduct", {}, true)
         }
     });
 });
