@@ -22,29 +22,41 @@
 					title="Artikel"
 				>
 					<form:content>
-						<Label text="Name"/>
+						<Label text="Produkt-Id"/>
 						<Input
-							id="name"
+							id="_id"
+							value="{products>_id}"
+							placeholder="id"
+							editable="false"
+							change=".onValueChanged"
+						/>
+						<Label text="Produkttitel"/>
+						<Input
+							id="title"
 							value="{products>title}"
 							placeholder="Produkttitel"
+							change=".onValueChanged"
 						/>
 						<Label text="Preis in Euro"/>
 						<Input
 							id="price"
 							value="{products>price}"
 							placeholder="Preis"
+							change=".onValueChanged"
 						/>
 						<Label text="Beschreibung"/>
 						<Input
 							id="description"
 							value="{products>description}"
 							placeholder="Beschreibung"
+							change=".onValueChanged"
 						/>
 						<Label text="Bildpfad"/>
 						<Input
 							id="imgpath"
 							value="{products>imgpath}"
 							placeholder="Bildpfad"
+							change=".onValueChanged"
 						/>
 					</form:content>
 				</form:SimpleForm>

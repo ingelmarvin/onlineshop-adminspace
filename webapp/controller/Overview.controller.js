@@ -1,7 +1,9 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
+    "sap/ui/core/mvc/Controller",
+    "sap/m/Button"
 ], function (
-    Controller
+    Controller,
+    Button
 ) {
     "use strict";
 
@@ -18,10 +20,6 @@ sap.ui.define([
         onProductsPressed: function (oEvent) {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("products");
-        },
-
-        onNavigate: function (oEvent) {
-
         }
     });
 });
