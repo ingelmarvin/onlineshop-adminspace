@@ -65,7 +65,7 @@
 						press=".onOrderPressed"
 					>
 						<cells>
-							<ObjectIdentifier title="{orders>id}"/>
+							<ObjectIdentifier title="{orders>_id}"/>
 							<ObjectNumber
 								number="{
 									parts: [{

@@ -51,11 +51,9 @@
     "sap.ui5": {
         "_version": "1.1.0",
         "resources": {
-            "js": [
-                {
-                    "uri": "<uri>"
-                }
-            ]
+            "js": [{
+                "uri": "<uri>"
+            }]
         },
         "dependencies": {
             "minUI5Version": "1.60",
@@ -101,8 +99,7 @@
                 "controlAggregation": "pages",
                 "async": true
             },
-            "routes": [
-                {
+            "routes": [{
                     "pattern": "",
                     "name": "overview",
                     "target": "overview"
@@ -116,6 +113,11 @@
                     "pattern": "products",
                     "name": "products",
                     "target": "products"
+                },
+                {
+                    "pattern": "product/{productPath}",
+                    "name": "product",
+                    "target": "product"
                 }
             ],
             "targets": {
@@ -130,6 +132,10 @@
                 "products": {
                     "viewId": "products",
                     "viewName": "Products"
+                },
+                "product": {
+                    "viewId": "product",
+                    "viewName": "Product"
                 }
             }
         },

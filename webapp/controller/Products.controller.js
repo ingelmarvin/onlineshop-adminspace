@@ -25,7 +25,12 @@ sap.ui.define([
         },
 
         onProductPressed: function (oEvent) {
-            sap.m.MessageToast.show("Product clicked!");
+            var oItem = oEvent.getSource()
+            // get properties of specific item: oItem.getBindingContext("products").getObject()
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("product", {
+                productPath: window.encodeURIComponent(oItem.getBindingContext("products").getPath().substr(1))
+            });
         }
     });
 });

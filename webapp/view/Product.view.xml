@@ -1,0 +1,65 @@
+<mvc:View
+	controllerName="onlineshop.adminspace.controller.Product"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<Page
+		showNavButton="true"
+		navButtonPress=".onNavBack"
+		title="{i18n>productTitle}"
+	>
+		<subHeader>
+		</subHeader>
+		<content>
+			<VBox class="sapUiSmallMargin">
+				<form:SimpleForm
+					editable="true"
+					layout="ColumnLayout"
+					title="Artikel"
+				>
+					<form:content>
+						<Label text="Name"/>
+						<Input
+							id="name"
+							value="{products>title}"
+							placeholder="Produkttitel"
+						/>
+						<Label text="Preis in Euro"/>
+						<Input
+							id="price"
+							value="{products>price}"
+							placeholder="Preis"
+						/>
+						<Label text="Beschreibung"/>
+						<Input
+							id="description"
+							value="{products>description}"
+							placeholder="Beschreibung"
+						/>
+						<Label text="Bildpfad"/>
+						<Input
+							id="imgpath"
+							value="{products>imgpath}"
+							placeholder="Bildpfad"
+						/>
+					</form:content>
+				</form:SimpleForm>
+			</VBox>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					text="Änderungen speichern"
+					type="Accept"
+					icon="sap-icon://save"
+					press="onSave"
+				/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>
