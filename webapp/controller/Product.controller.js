@@ -104,7 +104,7 @@ sap.ui.define([
                     window.savedSinceLastChange = true;
 
                     sap.m.MessageToast.show(sResult);
-                    $.get("http://localhost:3000/products", (data, status) => {
+                    $.get("http://localhost:3000/products", (oResponseData, sStatus) => {
                         this._refreshProductModel();
                     });
                 },
@@ -124,7 +124,30 @@ sap.ui.define([
         },
 
         onDelete: function (oEvent) {
+            MessageBox.error("Produkt wirklich löschen?", {
+                actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
+                emphasizedAction: MessageBox.Action.OK,
+                title: "Achtung",
+                onClose: (sAction) => {
+                    if (sAction === "OK") {
+                        this._deleteProduct();
+                    }
+                }
+            });
+        },
+
+        _deleteProduct: function () {
             //TODO
+            $.ajax({
+                url: "http://localhost:3000/products",
+                type: 'DELETE',
+                success: (result) => {
+                    console.log(result);
+                },
+                error: (result) => {
+                    console.log(result);
+                }
+            });
         }
     });
 });
