@@ -29,7 +29,6 @@ sap.ui.define([
         },
 
         _saveInitValues: function () {
-            //save init values for reset
             window.title = this.byId("title").getValue();
             window.price = this.byId("price").getValue();
             window.description = this.byId("description").getValue();
@@ -38,7 +37,6 @@ sap.ui.define([
         },
 
         _resetToInitValues: function () {
-            //save init values for reset
             if (!window.savedSinceLastChange) {
                 this.byId("title").setValue(window.title);
                 this.byId("price").setValue(window.price);
@@ -98,7 +96,7 @@ sap.ui.define([
                 type: "PUT",
                 contentType: 'application/json',
                 data: JSON.stringify(oData),
-                success: function (sResult) {
+                success: (sResult) => {
                     window.title = oData.title;
                     window.price = oData.price;
                     window.description = oData.description;
@@ -106,15 +104,27 @@ sap.ui.define([
                     window.savedSinceLastChange = true;
 
                     sap.m.MessageToast.show(sResult);
+                    $.get("http://localhost:3000/products", (data, status) => {
+                        this._refreshProductModel();
+                    });
                 },
                 error: function (oError) {
-                    sap.m.MessageToast.show(oError.responseText);
+                    sap.m.MessageToast.show("Fehler beim Erstellen des Produktes!");
                 }
             });
         },
 
+        _refreshProductModel: function () {
+            this.getView().getModel("products").setData(data);
+            this.getView().getModel("products").refresh(true);
+        },
+
         onValueChanged: function (oEvent) {
             window.savedSinceLastChange = false;
+        },
+
+        onDelete: function (oEvent) {
+            //TODO
         }
     });
 });

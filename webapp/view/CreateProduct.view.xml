@@ -2,13 +2,61 @@
 	controllerName="onlineshop.adminspace.controller.CreateProduct"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
+	xmlns:form="sap.ui.layout.form"
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
 >
-	<Page>
+	<Page
+		showNavButton="true"
+		navButtonPress=".onNavBack"
+		title="{i18n>productCreateTitle}"
+	>
+		<subHeader>
+		</subHeader>
 		<content>
-			<Button text="moin"/>
+			<VBox class="sapUiSmallMargin">
+				<form:SimpleForm
+					editable="true"
+					layout="ColumnLayout"
+					title="Artikel"
+				>
+					<form:content>
+						<Label text="Produkttitel"/>
+						<Input
+							id="title"
+							placeholder="Produkttitel"
+						/>
+						<Label text="Preis in Euro"/>
+						<Input
+							id="price"
+							placeholder="Preis"
+							type="Number"
+						/>
+						<Label text="Beschreibung"/>
+						<Input
+							id="description"
+							placeholder="Beschreibung"
+						/>
+						<Label text="Bildpfad"/>
+						<Input
+							id="imgpath"
+							placeholder="Bildpfad"
+						/>
+					</form:content>
+				</form:SimpleForm>
+			</VBox>
 		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					text="Änderungen speichern"
+					type="Accept"
+					icon="sap-icon://save"
+					press="onCreate"
+				/>
+			</OverflowToolbar>
+		</footer>
 	</Page>
 </mvc:View>

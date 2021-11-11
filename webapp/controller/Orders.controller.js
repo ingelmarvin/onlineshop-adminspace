@@ -2,12 +2,16 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/ui/core/UIComponent",
-    "../model/formatter"
+    "../model/formatter",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
 ], function (
     Controller,
     History,
     UIComponent,
-    formatter
+    formatter,
+    Filter,
+    FilterOperator
 ) {
     "use strict";
     return Controller.extend("onlineshop.adminspace.controller.Orders", {
@@ -29,10 +33,21 @@ sap.ui.define([
 
         onOrderPressed: function (oEvent) {
             sap.m.MessageToast.show("Order clicked");
+            //TODO
         },
 
         onFilterOrders: function (oEvent) {
+            // build filter array
+            var aFilter = [];
+            var sQuery = oEvent.getParameter("query");
+            if (sQuery) {
+                aFilter.push(new Filter("_id", FilterOperator.Contains, sQuery));
+            }
 
+            // filter binding
+            var oList = this.byId("table");
+            var oBinding = oList.getBinding("items");
+            oBinding.filter(aFilter);
         }
     });
 });

@@ -43,6 +43,7 @@
 							value="{products>price}"
 							placeholder="Preis"
 							change=".onValueChanged"
+							type="Number"
 						/>
 						<Label text="Beschreibung"/>
 						<Input
@@ -65,6 +66,12 @@
 		<footer>
 			<OverflowToolbar>
 				<ToolbarSpacer/>
+				<Button
+					text="Produkt löschen"
+					type="Reject"
+					icon="sap-icon://delete"
+					press="onDelete"
+				/>
 				<Button
 					text="Änderungen speichern"
 					type="Accept"

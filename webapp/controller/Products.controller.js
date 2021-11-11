@@ -3,13 +3,17 @@ sap.ui.define([
     "sap/ui/core/routing/History",
     "sap/ui/core/UIComponent",
     "../model/formatter",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/ui/model/Filter",
+    "sap/ui/model/FilterOperator"
 ], function (
     Controller,
     History,
     UIComponent,
     formatter,
-    MessageBox
+    MessageBox,
+    Filter,
+    FilterOperator
 ) {
     "use strict";
     return Controller.extend("onlineshop.adminspace.controller.Products", {
@@ -38,6 +42,20 @@ sap.ui.define([
         onCreateProduct: function (oEvent) {
             const oRouter = UIComponent.getRouterFor(this);
             oRouter.navTo("createProduct", {}, true)
+        },
+
+        onFilterProducts: function (oEvent) {
+            // build filter array
+            var aFilter = [];
+            var sQuery = oEvent.getParameter("query");
+            if (sQuery) {
+                aFilter.push(new Filter("title", FilterOperator.Contains, sQuery));
+            }
+
+            // filter binding
+            var oList = this.byId("table");
+            var oBinding = oList.getBinding("items");
+            oBinding.filter(aFilter);
         }
     });
 });

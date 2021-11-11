@@ -12,6 +12,16 @@
 		title="{i18n>productsTitle}"
 	>
 		<subHeader>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<SearchField
+					width="14rem"
+					search=".onFilterProducts"
+					ariaLabelledBy="searchFieldLabel"
+					ariaDescribedBy="searchFieldDescription"
+					placeholder="{i18n>searchFieldPlaceHolder}"
+				/>
+			</Toolbar>
 		</subHeader>
 		<content>
 			<Table
@@ -22,7 +32,7 @@
 				items="{
 					path: 'products>/Products',
 					sorter: {
-						path: 'id'
+						path: 'title'
 					}
 				}"
 			>
