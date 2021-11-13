@@ -15,6 +15,8 @@ sap.ui.define([
     return Controller.extend("onlineshop.adminspace.controller.Product", {
         formatter: formatter,
 
+        //TODO: bild anzeigen, bild uploaden statt pfad angeben
+
         onInit: function () {
             const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("product").attachPatternMatched(this._onObjectMatched, this);
@@ -104,19 +106,20 @@ sap.ui.define([
                     window.savedSinceLastChange = true;
 
                     sap.m.MessageToast.show(sResult);
-                    $.get("http://localhost:3000/products", (oResponseData, sStatus) => {
-                        this._refreshProductModel();
-                    });
+                    this._refreshProductModel();
+
                 },
-                error: function (oError) {
+                error: (oError) => {
                     sap.m.MessageToast.show("Fehler beim Erstellen des Produktes!");
                 }
             });
         },
 
         _refreshProductModel: function () {
-            this.getView().getModel("products").setData(data);
-            this.getView().getModel("products").refresh(true);
+            $.get("http://localhost:3000/products", (oResponseData, sStatus) => {
+                this.getView().getModel("products").setData(oResponseData);
+                this.getView().getModel("products").refresh(true);
+            });
         },
 
         onValueChanged: function (oEvent) {
@@ -137,15 +140,27 @@ sap.ui.define([
         },
 
         _deleteProduct: function () {
-            //TODO
+            const oData = {
+                _id: this.byId("_id").getValue()
+            };
             $.ajax({
                 url: "http://localhost:3000/products",
-                type: 'DELETE',
-                success: (result) => {
-                    console.log(result);
+                type: "DELETE",
+                data: JSON.stringify(oData),
+                dataType: "text",
+                contentType: 'application/json',
+                success: (oResponseData) => {
+                    console.log(oResponseData);
+                    this._refreshProductModel();
+                    //sap.ui.getCore().getEventBus().publish("channel1", "productDeletedEvent", { oResponseData });
+                    MessageBox.information("Produkt wurde gelöscht", {
+                        onClose: (oAction) => {
+                            this._navBack();
+                        }
+                    });
                 },
-                error: (result) => {
-                    console.log(result);
+                error: (oResponseData) => {
+                    sap.m.MessageToast.show(oResponseData);
                 }
             });
         }

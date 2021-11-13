@@ -12,6 +12,8 @@ sap.ui.define([
     "use strict";
 
     return Controller.extend("onlineshop.adminspace.controller.CreateProduct", {
+
+        //TODO: bild uploaden statt pfad angeben
         onCreate: function (oEvent) {
             if (this._formIsNotCompletelyFilled()) {
                 MessageBox.error("Alle Felder müssen ausgefüllt sein!", {
@@ -34,7 +36,6 @@ sap.ui.define([
                         sap.m.MessageToast.show(sResult);
                         this._resetToInitValues();
                         $.get("http://localhost:3000/products", (data, status) => {
-                            console.log(data);
                             this._refreshProductModel();
                         });
                     },
@@ -63,8 +64,10 @@ sap.ui.define([
         },
 
         _refreshProductModel: function () {
-            this.getView().getModel("products").setData(data);
-            this.getView().getModel("products").refresh(true);
+            $.get("http://localhost:3000/products", (oResponseData, sStatus) => {
+                this.getView().getModel("products").setData(oResponseData);
+                this.getView().getModel("products").refresh(true);
+            });
         },
 
         _resetToInitValues: function () {

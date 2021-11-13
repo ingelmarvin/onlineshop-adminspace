@@ -38,15 +38,15 @@ sap.ui.define([
 
         onFilterOrders: function (oEvent) {
             // build filter array
-            var aFilter = [];
-            var sQuery = oEvent.getParameter("query");
+            const aFilter = [];
+            const sQuery = oEvent.getParameter("query");
             if (sQuery) {
                 aFilter.push(new Filter("_id", FilterOperator.Contains, sQuery));
             }
 
             // filter binding
-            var oList = this.byId("table");
-            var oBinding = oList.getBinding("items");
+            const oList = this.byId("table");
+            const oBinding = oList.getBinding("items");
             oBinding.filter(aFilter);
         }
     });

@@ -18,6 +18,9 @@ sap.ui.define([
     "use strict";
     return Controller.extend("onlineshop.adminspace.controller.Products", {
         formatter: formatter,
+        onInit: function () {
+            //sap.ui.getCore().getEventBus().subscribe("channel1", "productDeletedEvent", this._onProductDeletedEvent, this);
+        },
         onNavBack: function (oEvent) {
             const oHistory = History.getInstance();
             const sPreviousHash = oHistory.getPreviousHash();
@@ -46,16 +49,21 @@ sap.ui.define([
 
         onFilterProducts: function (oEvent) {
             // build filter array
-            var aFilter = [];
-            var sQuery = oEvent.getParameter("query");
+            const aFilter = [];
+            const sQuery = oEvent.getParameter("query");
             if (sQuery) {
                 aFilter.push(new Filter("title", FilterOperator.Contains, sQuery));
             }
 
             // filter binding
-            var oList = this.byId("table");
-            var oBinding = oList.getBinding("items");
+            const oList = this.byId("table");
+            const oBinding = oList.getBinding("items");
             oBinding.filter(aFilter);
+        },
+
+        _onProductDeletedEvent: function (sChannelId, sEventId, oEventData) {
+            //TODO: oEventData ausgeben
+            sap.m.MessageToast.show(oEventData.oResponseData);
         }
     });
 });
