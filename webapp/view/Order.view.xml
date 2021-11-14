@@ -1,0 +1,78 @@
+<mvc:View
+	controllerName="onlineshop.adminspace.controller.Order"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+>
+	<Page
+		title="{i18n>orderTitle}"
+		showNavButton="true"
+		navButtonPress=".onNavBack"
+	>
+		<content>
+			<Table
+				alternateRowColors="true"
+				id="table"
+				class="saUiResponsiveMargin"
+				width="auto"
+				items="{
+					path: 'orders>/Orders>products',
+					sorter: {
+						path: 'date'
+					}
+				}"
+			>
+				<columns>
+					<Column>
+						<Text text="{i18n>columnOrderID}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnValue}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnQuantity}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier title="{orders>title}"/>
+							<ObjectNumber
+								number="{
+									parts: [{
+										path: 'orders>price'
+									}, {
+										path: 'orders>currency'
+									}],
+									type: 'sap.ui.model.type.Currency',
+									formatOptions: {
+										showMeasure: false
+									}
+								}"
+								unit="{orders>currency}"
+								state="Success"
+							/>
+							<ObjectNumber
+								number="{orders>quantity}"
+								emphasized="false"
+							/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					text="Änderungen speichern"
+					type="Accept"
+					icon="sap-icon://save"
+					press="onSave"
+				/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

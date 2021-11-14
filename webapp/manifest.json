@@ -126,6 +126,11 @@
                     "pattern": "createProduct",
                     "name": "createProduct",
                     "target": "createProduct"
+                },
+                {
+                    "pattern": "order/{orderPath}",
+                    "name": "order",
+                    "target": "order"
                 }
             ],
             "targets": {
@@ -148,6 +153,10 @@
                 "createProduct": {
                     "viewId": "createProduct",
                     "viewName": "CreateProduct"
+                },
+                "order": {
+                    "viewId": "order",
+                    "viewName": "Order"
                 }
             }
         },

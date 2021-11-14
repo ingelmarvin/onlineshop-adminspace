@@ -150,7 +150,6 @@ sap.ui.define([
                 dataType: "text",
                 contentType: 'application/json',
                 success: (oResponseData) => {
-                    console.log(oResponseData);
                     this._refreshProductModel();
                     //sap.ui.getCore().getEventBus().publish("channel1", "productDeletedEvent", { oResponseData });
                     MessageBox.information("Produkt wurde gelöscht", {

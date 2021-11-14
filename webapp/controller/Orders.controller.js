@@ -32,8 +32,11 @@ sap.ui.define([
         },
 
         onOrderPressed: function (oEvent) {
-            sap.m.MessageToast.show("Order clicked");
-            //TODO
+            var oItem = oEvent.getSource()
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("order", {
+                orderPath: window.encodeURIComponent(oItem.getBindingContext("orders").getPath().substr(1))
+            });
         },
 
         onFilterOrders: function (oEvent) {
