@@ -18,7 +18,7 @@
 				class="saUiResponsiveMargin"
 				width="auto"
 				items="{
-					path: 'orders>/Orders>products',
+					path: 'orderproducts>/products',
 					sorter: {
 						path: 'date'
 					}
@@ -38,24 +38,24 @@
 				<items>
 					<ColumnListItem>
 						<cells>
-							<ObjectIdentifier title="{orders>title}"/>
+							<ObjectIdentifier title="{orderproducts>title}"/>
 							<ObjectNumber
 								number="{
 									parts: [{
-										path: 'orders>price'
+										path: 'orderproducts>price'
 									}, {
-										path: 'orders>currency'
+										path: 'orderproducts>currency'
 									}],
 									type: 'sap.ui.model.type.Currency',
 									formatOptions: {
 										showMeasure: false
 									}
 								}"
-								unit="{orders>currency}"
+								unit="{orderproducts>currency}"
 								state="Success"
 							/>
 							<ObjectNumber
-								number="{orders>quantity}"
+								number="{orderproducts>quantity}"
 								emphasized="false"
 							/>
 						</cells>
