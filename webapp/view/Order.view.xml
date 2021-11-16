@@ -12,6 +12,86 @@
 		navButtonPress=".onNavBack"
 	>
 		<content>
+			<Panel
+				backgroundDesign="Transparent"
+				expandable="true"
+				expanded="true"
+				headerText="Lieferadresse"
+			>
+				<content>
+					<VBox>
+						<HBox>
+							<VBox
+								alignItems="Start"
+								width="10rem"
+							>
+								<Label
+									text="Vorname"
+									labelFor="firstname"
+								/>
+								<Text
+									text="{orders>address/firstname}"
+									id="firstname"
+								/>
+							</VBox>
+							<VBox
+								alignItems="Start"
+								width="10rem"
+							>
+								<Label
+									text="Nachname"
+									labelFor="lastname"
+								/>
+								<Text
+									text="{orders>address/lastname}"
+									id="lastname"
+								/>
+							</VBox>
+						</HBox>
+						<HBox class="sapUiMediumMarginTop">
+							<VBox
+								alignItems="Start"
+								width="10rem"
+							>
+								<Label
+									text="Anschrift"
+									labelFor="street"
+								/>
+								<Text
+									text="{orders>address/street} {orders>address/streetnr}"
+									id="street"
+								/>
+							</VBox>
+							<VBox
+								alignItems="Start"
+								width="10rem"
+							>
+								<Label
+									text="Postleitzahl"
+									labelFor="zipcode"
+								/>
+								<Text
+									text="{orders>address/zipcode}"
+									id="zipcode"
+								/>
+							</VBox>
+							<VBox
+								alignItems="Start"
+								width="10rem"
+							>
+								<Label
+									text="Stadt"
+									labelFor="city"
+								/>
+								<Text
+									text="{orders>address/city}"
+									id="city"
+								/>
+							</VBox>
+						</HBox>
+					</VBox>
+				</content>
+			</Panel>
 			<Table
 				alternateRowColors="true"
 				id="table"
@@ -20,19 +100,46 @@
 				items="{
 					path: 'orderproducts>/products',
 					sorter: {
-						path: 'date'
+						path: 'orderproducts>title'
 					}
 				}"
+				headerText="Bestellte Artikel"
 			>
 				<columns>
 					<Column>
 						<Text text="{i18n>columnOrderID}"/>
+						<footer>
+							<ObjectIdentifier title="Gesamt"/>
+						</footer>
 					</Column>
 					<Column>
 						<Text text="{i18n>columnValue}"/>
+						<footer>
+							<ObjectNumber
+								number="{
+									parts: [{
+										path: 'orders>value'
+									}, {
+										path: 'orders>currency'
+									}],
+									type: 'sap.ui.model.type.Currency',
+									formatOptions: {
+										showMeasure: false
+									}
+								}"
+								unit="{orders>currency}"
+								state="Success"
+							/>
+						</footer>
 					</Column>
 					<Column>
 						<Text text="{i18n>columnQuantity}"/>
+						<footer>
+							<ObjectNumber
+								number="{orders>quantity}"
+								emphasized="true"
+							/>
+						</footer>
 					</Column>
 				</columns>
 				<items>
