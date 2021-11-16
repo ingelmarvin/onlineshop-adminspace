@@ -23,7 +23,7 @@
 						<HBox>
 							<VBox
 								alignItems="Start"
-								width="10rem"
+								width="12rem"
 							>
 								<Label
 									text="Vorname"
@@ -36,7 +36,7 @@
 							</VBox>
 							<VBox
 								alignItems="Start"
-								width="10rem"
+								width="12rem"
 							>
 								<Label
 									text="Nachname"
@@ -51,7 +51,7 @@
 						<HBox class="sapUiMediumMarginTop">
 							<VBox
 								alignItems="Start"
-								width="10rem"
+								width="12rem"
 							>
 								<Label
 									text="Anschrift"
@@ -64,7 +64,7 @@
 							</VBox>
 							<VBox
 								alignItems="Start"
-								width="10rem"
+								width="12rem"
 							>
 								<Label
 									text="Postleitzahl"
@@ -77,7 +77,7 @@
 							</VBox>
 							<VBox
 								alignItems="Start"
-								width="10rem"
+								width="12rem"
 							>
 								<Label
 									text="Stadt"
@@ -174,9 +174,24 @@
 			<OverflowToolbar>
 				<ToolbarSpacer/>
 				<Button
-					text="Änderungen speichern"
+					text="Als bezahlt markieren"
 					type="Accept"
-					icon="sap-icon://save"
+					enabled="{= !${orders>payed}}"
+					icon="sap-icon://payment-approval"
+					press="onSave"
+				/>
+				<Button
+					text="Als versendet markieren"
+					type="Accept"
+					enabled="{
+						parts: [{
+							path: 'orders>payed'
+						}, {
+							path: 'orders>sent'
+						}],
+						formatter: '.formatter.deliveryButton'
+					}"
+					icon="sap-icon://shipping-status"
 					press="onSave"
 				/>
 			</OverflowToolbar>

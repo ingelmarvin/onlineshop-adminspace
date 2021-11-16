@@ -15,31 +15,31 @@ sap.ui.define([], function () {
             if (bStatus) {
                 return "Success";
             } else {
-                return "Error";
-            }
-        },
-
-        deliveryText: function (sStatus) {
-            if (sStatus === "") {
-                return "Unbekannt";
-            } else if (sStatus === "ordered") {
-                return "Nicht versendet";
-            } else if (sStatus === "shipped") {
-                return "Versendet"
-            } else {
-                return "Unbekannt";
-            }
-        },
-
-        deliveryState: function (sStatus) {
-            if (sStatus === "") {
-                return "Error";
-            } else if (sStatus === "ordered") {
                 return "Warning";
-            } else if (sStatus === "shipped") {
-                return "Success"
+            }
+        },
+
+        deliveryText: function (bStatus) {
+            if (bStatus) {
+                return "Versendet";
             } else {
-                return "Error";
+                return "Nicht versendet";
+            }
+        },
+
+        deliveryState: function (bStatus) {
+            if (bStatus) {
+                return "Success";
+            } else {
+                return "Warning";
+            }
+        },
+
+        deliveryButton: function (bPayed, bSent) {
+            if (bPayed && !bSent) {
+                return true;
+            } else {
+                return false;
             }
         }
     }

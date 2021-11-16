@@ -17,9 +17,7 @@
 				<SearchField
 					width="14rem"
 					search=".onFilterOrders"
-					ariaLabelledBy="searchFieldLabel"
-					ariaDescribedBy="searchFieldDescription"
-					placeholder="{i18n>searchFieldPlaceHolder}"
+					placeholder="{i18n>ordersSearchFieldPlaceHolder}"
 				/>
 			</Toolbar>
 		</subHeader>

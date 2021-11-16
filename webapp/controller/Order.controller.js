@@ -2,14 +2,17 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/routing/History",
     "sap/ui/core/UIComponent",
+    "../model/formatter"
 ], function (
     Controller,
     History,
-    UIComponent
+    UIComponent,
+    formatter
 ) {
     "use strict";
 
     return Controller.extend("onlineshop.adminspace.controller.Order", {
+        formatter: formatter,
         onInit: function () {
             const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("order").attachPatternMatched(this._onObjectMatched, this);
