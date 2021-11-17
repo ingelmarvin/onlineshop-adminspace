@@ -8,8 +8,8 @@
 	<Page title="{i18n>homePageTitle}">
 		<content>
 			<f:Card
-				class="sapUiMediumMargin"
-				width="45%"
+				class="sapUiMediumMarginTop"
+				width="100%"
 			>
 				<f:header>
 					<card:Header
@@ -21,13 +21,13 @@
 				</f:header>
 			</f:Card>
 			<f:Card
-				class="sapUiMediumMargin"
-				width="45%"
+				class="sapUiMediumMarginTop"
+				width="100%"
 			>
 				<f:header>
 					<card:Header
 						title="Produkte"
-						subtitle="Produkte anzeigen und bearbeiten"
+						subtitle="Produkte anzeigen, bearbeiten, erstellen und entfernen"
 						iconSrc="sap-icon://product"
 						press=".onProductsPressed"
 					/>

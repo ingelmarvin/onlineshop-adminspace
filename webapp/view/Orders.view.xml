@@ -95,11 +95,11 @@
 							/>
 							<ObjectStatus
 								text="{
-									path: 'orders>status',
+									path: 'orders>sent',
 									formatter: '.formatter.deliveryText'
 								}"
 								state="{
-									path: 'orders>status',
+									path: 'orders>sent',
 									formatter: '.formatter.deliveryState'
 								}"
 							/>

@@ -178,7 +178,8 @@
 					type="Accept"
 					enabled="{= !${orders>payed}}"
 					icon="sap-icon://payment-approval"
-					press="onSave"
+					press="onPayed"
+					tooltip="{= ${orders>payed} ? 'Bestellung wurde bereits als bezahlt markiert' : ''}"
 				/>
 				<Button
 					text="Als versendet markieren"
@@ -189,10 +190,18 @@
 						}, {
 							path: 'orders>sent'
 						}],
-						formatter: '.formatter.deliveryButton'
+						formatter: '.formatter.deliveryButtonEnabled'
 					}"
 					icon="sap-icon://shipping-status"
-					press="onSave"
+					press="onSent"
+					tooltip="{
+						parts: [{
+							path: 'orders>payed'
+						}, {
+							path: 'orders>sent'
+						}],
+						formatter: '.formatter.deliveryButtonHover'
+					}"
 				/>
 			</OverflowToolbar>
 		</footer>
