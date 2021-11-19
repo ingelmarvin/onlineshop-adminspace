@@ -59,6 +59,10 @@
 							placeholder="Bildpfad"
 							change=".onValueChanged"
 						/>
+						<Button
+							text="Bild öffnen"
+							press="onOpenImage"
+						/>
 					</form:content>
 				</form:SimpleForm>
 			</VBox>

@@ -15,7 +15,7 @@ sap.ui.define([
     return Controller.extend("onlineshop.adminspace.controller.Product", {
         formatter: formatter,
 
-        //TODO: bild anzeigen, bild uploaden statt pfad angeben
+        //TODO: bild uploaden statt pfad angeben
 
         onInit: function () {
             const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -162,6 +162,11 @@ sap.ui.define([
                     sap.m.MessageToast.show(oResponseData);
                 }
             });
+        },
+
+        onOpenImage: function (oEvent) {
+            const sImagePath = this.byId("imgpath").getValue();
+            window.open("http://localhost:3000/" + sImagePath, "_blank").focus();
         }
     });
 });
