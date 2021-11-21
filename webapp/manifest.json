@@ -12,10 +12,7 @@
         "title": "{{appTitle}}",
         "description": "{{appDescription}}",
         "tags": {
-            "keywords": [
-                "{{<keyword1>}}",
-                "{{<keyword2>}}"
-            ]
+            "keywords": []
         },
         "dataSources": {
             "ordersRemote": {

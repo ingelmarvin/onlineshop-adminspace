@@ -100,7 +100,7 @@
 				items="{
 					path: 'orderproducts>/products',
 					sorter: {
-						path: 'orderproducts>title'
+						path: 'title'
 					}
 				}"
 				headerText="Bestellte Artikel"

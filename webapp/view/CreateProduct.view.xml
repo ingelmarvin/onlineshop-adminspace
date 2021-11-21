@@ -3,6 +3,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	xmlns:form="sap.ui.layout.form"
+	xmlns:ui="sap.ui.unified"
 	displayBlock="true"
 	height="100%"
 	busyIndicatorDelay="0"
@@ -42,6 +43,16 @@
 						<Input
 							id="imgpath"
 							placeholder="Bildpfad"
+						/>
+						<Label text="Bild hochladen"/>
+						<ui:FileUploader
+							id="fileUploader"
+							uploadUrl="http://localhost:3000/productimg"
+							uploadComplete="onUploadComplete"
+						/>
+						<Button
+							text="Bild hochladen"
+							press="uploadImage"
 						/>
 					</form:content>
 				</form:SimpleForm>

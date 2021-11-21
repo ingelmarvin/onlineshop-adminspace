@@ -103,6 +103,25 @@ sap.ui.define([
             } else {
                 return true;
             }
-        }
+        },
+
+        uploadImage: function () {
+            var oFileUploader = this.byId("fileUploader");
+            oFileUploader.checkFileReadable().then(function () {
+                oFileUploader.upload();
+            }, function (error) {
+                MessageToast.show("The file cannot be read. It may have changed.");
+            }).then(function () {
+                oFileUploader.clear();
+            });
+        },
+
+        onUploadComplete: function (oEvent) {
+            //TODO: get response vom server |http://nelsonkalariya.blogspot.com/2018/01/file-upload-and-send-it-through-ajax-to.html
+            const sResponse = oEvent.getParameter("response");
+            const iHttpStatusCode = parseInt(/\d{3}/.exec(sResponse)[0]);
+            // const sMessage;
+        },
+
     });
 });

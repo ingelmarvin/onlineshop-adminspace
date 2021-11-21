@@ -62,7 +62,6 @@ sap.ui.define([
         },
 
         _onProductDeletedEvent: function (sChannelId, sEventId, oEventData) {
-            //TODO: oEventData ausgeben
             sap.m.MessageToast.show(oEventData.oResponseData);
         }
     });
